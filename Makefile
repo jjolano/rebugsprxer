@@ -12,7 +12,7 @@ INCLUDE		:=	include
 DATA		:=	data
 LIBS		:=	-lgcm_sys -lreality -lsysutil -lio
 
-TITLE		:=	rebugswapper
+TITLE		:=	rebugsprxer
 APPID		:=	REBG00001
 CONTENTID	:=	UP0001-$(APPID)_00-0000000000000000
 PKGFILES	:=	release

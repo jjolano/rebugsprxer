@@ -171,11 +171,11 @@ int main(int argc, const char* argv[])
 				{
 					if(copyfile("/dev_flash/rebug/debug_menu_1/sysconf_plugin.sprx", "/dev_blind/vsh/module/sysconf_plugin.sprx") == 0)
 					{
-						strcpy(status, "Status: [Debug Menu 1] sysconf_plugin.sprx swap successful");
+						strcpy(status, "Status: Debug Menu 1 installed");
 					}
 					else
 					{
-						strcpy(status, "Status: [Debug Menu 1] sysconf_plugin.sprx swap failed");
+						strcpy(status, "Status: Debug Menu 1 install failed");
 					}
 					
 					sleep(1);
@@ -184,11 +184,11 @@ int main(int argc, const char* argv[])
 				{
 					if(copyfile("/dev_flash/rebug/debug_menu_2/sysconf_plugin.sprx", "/dev_blind/vsh/module/sysconf_plugin.sprx") == 0)
 					{
-						strcpy(status, "Status: [Debug Menu 2] sysconf_plugin.sprx swap successful");
+						strcpy(status, "Status: Debug Menu 2 installed");
 					}
 					else
 					{
-						strcpy(status, "Status: [Debug Menu 2] sysconf_plugin.sprx swap failed");
+						strcpy(status, "Status: Debug Menu 2 install failed");
 					}
 					
 					sleep(1);
@@ -197,11 +197,11 @@ int main(int argc, const char* argv[])
 				{
 					if(copyfile("/dev_flash/rebug/debug_xmb/vsh.self", "/dev_blind/vsh/module/vsh.self") == 0)
 					{
-						strcpy(status, "Status: [Debug] vsh.self swap successful");
+						strcpy(status, "Status: Debug XMB installed");
 					}
 					else
 					{
-						strcpy(status, "Status: [Debug] vsh.self swap failed");
+						strcpy(status, "Status: Debug XMB install failed");
 					}
 					
 					sleep(1);
@@ -210,11 +210,11 @@ int main(int argc, const char* argv[])
 				{
 					if(copyfile("/dev_flash/rebug/retail_xmb/vsh.self", "/dev_blind/vsh/module/vsh.self") == 0)
 					{
-						strcpy(status, "Status: [Retail] vsh.self swap successful");
+						strcpy(status, "Status: Retail XMB installed");
 					}
 					else
 					{
-						strcpy(status, "Status: [Retail] vsh.self swap failed");
+						strcpy(status, "Status: Retail XMB install failed");
 					}
 					
 					sleep(1);
@@ -230,13 +230,13 @@ int main(int argc, const char* argv[])
 			}
 		}
 		
-		print(50, 50, "rebugswapper v1.0", buffers[currentBuffer]->ptr);
+		print(50, 50, "rebugsprxer v1.0", buffers[currentBuffer]->ptr);
 		print(50, 100, status, buffers[currentBuffer]->ptr);
 		
-		print(50, 200, "Press CROSS to swap: [Debug Menu 1] sysconf_plugin.sprx", buffers[currentBuffer]->ptr);
-		print(50, 250, "Press CIRCLE to swap: [Debug Menu 2] sysconf_plugin.sprx", buffers[currentBuffer]->ptr);
-		print(50, 300, "Press SQUARE to swap: [Debug] vsh.self", buffers[currentBuffer]->ptr);
-		print(50, 350, "Press TRIANGLE to swap: [Retail] vsh.self", buffers[currentBuffer]->ptr);
+		print(50, 200, "Press CROSS to install: [Debug Menu 1]", buffers[currentBuffer]->ptr);
+		print(50, 250, "Press CIRCLE to install: [Debug Menu 2]", buffers[currentBuffer]->ptr);
+		print(50, 300, "Press SQUARE to install: [Debug XMB]", buffers[currentBuffer]->ptr);
+		print(50, 350, "Press TRIANGLE to install: [Retail XMB]", buffers[currentBuffer]->ptr);
 		
 		flip(currentBuffer);
 		waitFlip();

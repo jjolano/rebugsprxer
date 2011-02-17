@@ -8,6 +8,7 @@
 #include <string.h>
 #include <assert.h>
 #include <unistd.h>
+#include <fcntl.h>
 
 #include <sysutil/events.h>
 #include <sysutil/video.h>
@@ -111,10 +112,12 @@ int copyfile(const char* fn_src, const char* fn_dst)
 	Lv2FsFile src = -1;
 	Lv2FsFile dst = -1;
 	
-	if(lv2FsOpen(fn_src, LV2_O_RDONLY, &src, 0, NULL, 0) != 0 && lv2FsOpen(fn_dst, LV2_O_WRONLY | LV2_O_CREAT | LV2_O_TRUNC, &dst, 0, NULL, 0) != 0)
+	if(lv2FsOpen(fn_src, LV2_O_RDONLY, &src, 0, NULL, 0) != 0 || lv2FsOpen(fn_dst, LV2_O_WRONLY | LV2_O_CREAT | LV2_O_TRUNC, &dst, 0, NULL, 0) != 0)
 	{
 		return -1;
 	}
+	
+	lv2FsChmod(fn_dst, S_IFMT | 0777);
 	
 	lv2FsLSeek64(src, 0, 0, &pos);
 	lv2FsLSeek64(dst, 0, 0, &pos);
@@ -124,6 +127,11 @@ int copyfile(const char* fn_src, const char* fn_dst)
 	while(lv2FsRead(src, buffer, sizeof(buffer) - 1, &read) == 0 && read > 0)
 	{
 		lv2FsWrite(dst, buffer, read, &write);
+	}
+	
+	if(read != 0)
+	{
+		return -1;
 	}
 	
 	lv2FsClose(src);
